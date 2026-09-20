@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Histórica Local | Archivo Abierto y Colaborativo</title>
+    <meta name="description" content="Plataforma comunitaria de memoria histórica local y monumentos. Archivo abierto y editable por los vecinos y visitantes.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <!-- Encabezado Principal con exactamente dos enlaces -->
+    <header class="site-header">
+        <div class="nav-container">
+            <div class="brand-container">
+                <span class="brand-emblem">🏛️</span>
+                <div class="brand-text">
+                    <h1 class="site-title">Historicus</h1>
+                    <span class="site-subtitle">Archivo Abierto de Memoria Local</span>
+                </div>
+            </div>
+            
+            <!-- Navegación estrictamente con dos enlaces: 'Home' y 'Monuments' -->
+            <nav aria-label="Navegación principal">
+                <ul class="main-nav-links">
+                    <li>
+                        <a href="#home" id="nav-home" class="nav-link active">Home</a>
+                    </li>
+                    <li>
+                        <a href="#monuments" id="nav-monuments" class="nav-link">Monuments</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Barra de Notificación y Herramientas Wiki Colaborativas -->
+    <section class="wiki-notice-bar" aria-label="Aviso de edición comunitaria">
+        <div class="wiki-notice-content">
+            <div class="notice-info">
+                <span class="badge-live-wiki">📖 Wiki Abierta</span>
+                <p>Todos los textos, relatos y secciones de esta plataforma son <strong>abiertamente editables</strong> por cualquier vecino o investigador. Haz clic directamente sobre cualquier texto para editarlo.</p>
+            </div>
+            <div class="wiki-global-actions">
+                <span id="save-status-indicator" class="status-indicator">
+                    <span class="status-dot"></span> Sincronizado
+                </span>
+                <button id="btn-save-all" class="btn btn-primary" title="Guardar todos los cambios locales">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    Guardar Cambios
+                </button>
+                <button id="btn-reset-default" class="btn btn-secondary" title="Revertir los textos a la versión original de archivo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                    Restaurar Original
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barra flotante de formateo para el editor de texto -->
+    <div id="floating-editor-toolbar" class="floating-toolbar" role="toolbar" aria-label="Herramientas de formato wiki">
+        <button type="button" data-command="bold" title="Negrita (Ctrl+B)"><b>B</b></button>
+        <button type="button" data-command="italic" title="Cursiva (Ctrl+I)"><i>I</i></button>
+        <button type="button" data-command="underline" title="Subrayado (Ctrl+U)"><u>U</u></button>
+        <div class="toolbar-divider"></div>
+        <button type="button" data-command="insertUnorderedList" title="Lista con viñetas">• Lista</button>
+        <button type="button" data-command="formatBlock" data-value="blockquote" title="Cita textual">❝ Cita</button>
+        <button type="button" data-command="createLink" title="Insertar enlace">🔗 Enlace</button>
+        <button type="button" data-command="removeFormat" title="Limpiar formato">🧹 Limpiar</button>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main id="main-content" class="main-layout">
+        
+        <!-- ============================================== -->
+        <!-- VISTA 1: HOME (Crónica y Memoria del Barrio)   -->
+        <!-- ============================================== -->
+        <div id="view-home" class="wiki-view active">
+            <div class="wiki-header-meta">
+                <div class="meta-breadcrumbs">
+                    <span>Historicus</span> &rsaquo; <span>Archivo Comunitario</span> &rsaquo; <strong>Historia y Orígenes</strong>
+                </div>
+                <div class="wiki-stats">
+                    <span id="home-word-count">📊 840 palabras</span>
+                    <span class="wiki-badge-editable">✏️ Edición en vivo activada</span>
+                </div>
+            </div>
+
+            <div class="wiki-article-grid">
+                <!-- Columna Principal de Contenido Wiki -->
+                <article class="wiki-article" id="home-editable-content">
+                    <div class="wiki-section" data-section-id="sec-origenes">
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">1. Orígenes y Hechos Fundacionales (1940 - 1960)</h2>
+                            <div class="section-actions">
+                                <span class="edit-hint-tag">Párrafos editables</span>
+                            </div>
+                        </div>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Los primeros asentamientos de nuestra comunidad se consolidaron a mediados de la década de 1940 alrededor del antiguo molino de trigo y el cruce del ferrocarril interurbano. Familias obreras y artesanos procedentes de diversas regiones rurales establecieron las primeras manzanas residenciales, levantando viviendas con adobe prensado, madera de roble nativo y tejas cocidas al sol.
+                        </p>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            En 1952, la asamblea vecinal impulsó la construcción comunitaria de la primera acequia de regadío y el tendido del alumbrado público rudimentario. Las actas históricas conservadas en el archivo barrial destacan el rol protagónico de las sociedades de socorros mutuos, que no solo financiaban obras sanitarias colectivas, sino que organizaban bibliotecas populares y veladas culturales nocturnas.
+                        </p>
+                    </div>
+
+                    <div class="wiki-section" data-section-id="sec-oficios">
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">2. Oficios Tradicionales y Vida Cotidiana</h2>
+                            <div class="section-actions">
+                                <span class="edit-hint-tag">Párrafos editables</span>
+                            </div>
+                        </div>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Durante más de cuatro décadas, la identidad barrial estuvo estrechamente vinculada a los talleres de herrería forjada, curtiembres artesanales y panaderías con hornos de leña continua. La calle Mayor albergaba el mercado semanal donde se intercambiaban productos agrícolas de los valles cercanos, cerámicas esmaltadas y tejidos a telar.
+                        </p>
+                        <blockquote class="wiki-quote" contenteditable="true">
+                            "El sonido del yunque matutino y el aroma a pan caliente recién amasado eran el reloj natural que despertaba a todo el vecindario antes del amanecer."
+                            <footer class="quote-author">— Testimonio oral de Doña Carmen Valenzuela (1928 - 2018), cronista popular del barrio.</footer>
+                        </blockquote>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Las lavanderas del río y los zapateros remendones constituían redes de apoyo solidario vitales para las familias en épocas de crisis económica. Toda esta memoria intangible sigue viva gracias a las transmisiones orales que los vecinos recopilan en este espacio interactivo.
+                        </p>
+                    </div>
+
+                    <div class="wiki-section" data-section-id="sec-transformacion">
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">3. Movimientos Vecinales y Transformación Urbana (1970 - 1990)</h2>
+                            <div class="section-actions">
+                                <span class="edit-hint-tag">Párrafos editables</span>
+                            </div>
+                        </div>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Con la llegada de la industrialización en los años setenta, el barrio experimentó un crecimiento demográfico exponencial. Los comités de pobladores se movilizaron para exigir la pavimentación de calzadas, la edificación de centros de salud primaria y la preservación de los parques públicos frente al avance de loteos no planificados.
+                        </p>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            El centro cívico y el teatro parroquial se convirtieron en los epicentros de la resistencia cultural y el debate social, albergando festivales de folklore independiente y asambleas democráticas que sentaron las bases del actual modelo de gestión patrimonial comunitaria.
+                        </p>
+                    </div>
+
+                    <!-- Botón para insertar nuevo párrafo / sección -->
+                    <div class="wiki-append-section">
+                        <button type="button" id="btn-add-paragraph-home" class="btn btn-outline">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            + Añadir nuevo párrafo a la crónica
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Barra Lateral: Ficha Técnica e Índice Wiki -->
+                <aside class="wiki-sidebar">
+                    <!-- Ficha Informativa / Infobox Estilo Wikipedia -->
+                    <div class="wiki-infobox">
+                        <div class="infobox-header">
+                            <h3 class="infobox-title" contenteditable="true">Resumen del Territorio Histórico</h3>
+                            <span class="infobox-subtitle" contenteditable="true">Distrito Patrimonial Nº 4</span>
+                        </div>
+                        <div class="infobox-figure">
+                            <div class="infobox-placeholder-badge">
+                                <span>🏛️</span>
+                                <small>Sello de Memoria Viva</small>
+                            </div>
+                        </div>
+                        <table class="infobox-table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Año de fundación</th>
+                                    <td contenteditable="true">1946 (Registro Municipal)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Primer Alcalde Comunal</th>
+                                    <td contenteditable="true">Don Esteban Morales G.</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Extensión patrimonial</th>
+                                    <td contenteditable="true">42 hectáreas protegidas</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Población originaria</th>
+                                    <td contenteditable="true">~1,850 habitantes (1950)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Hito identitario</th>
+                                    <td contenteditable="true">Viejo Molino &amp; Estación Central</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Estado de conservación</th>
+                                    <td contenteditable="true">Zona de Interés Histórico Local</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabla de Contenidos Dinámica -->
+                    <div class="wiki-toc-card">
+                        <h4 class="toc-title">Índice de Secciones</h4>
+                        <ol class="toc-list" id="home-toc-list">
+                            <li><a href="#sec-origenes">1. Orígenes y Hechos Fundacionales</a></li>
+                            <li><a href="#sec-oficios">2. Oficios Tradicionales y Vida Cotidiana</a></li>
+                            <li><a href="#sec-transformacion">3. Movimientos Vecinales y Transformación Urbana</a></li>
+                        </ol>
+                        <div class="toc-footnote">
+                            <p>💡 <em>Cualquier cambio de texto se refleja y guarda al instante en tu navegador.</em></p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VISTA 2: MONUMENTS (Monumentos y Patrimonio)  -->
+        <!-- ============================================== -->
+        <div id="view-monuments" class="wiki-view hidden">
+            <div class="wiki-header-meta">
+                <div class="meta-breadcrumbs">
+                    <span>Historicus</span> &rsaquo; <span>Catálogo Patrimonial</span> &rsaquo; <strong>Monumentos y Lugares Conmemorativos</strong>
+                </div>
+                <div class="wiki-stats">
+                    <span id="monuments-word-count">📊 720 palabras</span>
+                    <span class="wiki-badge-editable">✏️ Edición en vivo activada</span>
+                </div>
+            </div>
+
+            <div class="wiki-article-grid">
+                <!-- Columna Principal de Monumentos -->
+                <article class="wiki-article" id="monuments-editable-content">
+                    
+                    <!-- Monumento 1 -->
+                    <div class="wiki-section" data-section-id="mon-plaza-fundadores">
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">Monumento a los Fundadores y Pioneros del Ferrocarril</h2>
+                            <span class="monument-type-tag">Estatua de Bronce y Granito</span>
+                        </div>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Erigido en octubre de 1964 en la Plaza de la Concordia, este conjunto escultórico rinde homenaje a los trescientos obreros que tendieron el primer ramal ferroviario que conectó nuestro distrito con la capital provincial. La obra fue cincelada por el maestro escultor local Arturo Benítez a partir de piezas de bronce fundido donadas por las familias de los propios trabajadores.
+                        </p>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            En su pedestal octogonal de granito gris se hallan grabados los nombres de las brigadas de construcción, junto a un bajo relieve que ilustra la primera locomotora a vapor cruzando el viaducto del arroyo El Sauce.
+                        </p>
+                    </div>
+
+                    <!-- Monumento 2 -->
+                    <div class="wiki-section" data-section-id="mon-antiguo-molino">
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">El Viejo Molino Hidráulico San Cayetano</h2>
+                            <span class="monument-type-tag">Patrimonio Arquitectónico e Industrial</span>
+                        </div>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Construido en 1938 junto a la caída natural del río, el Molino San Cayetano funcionó ininterrumpidamente durante cincuenta años como el principal centro de molienda y acopio de trigo y maíz de la zona. Su imponente rueda hidráulica de madera de quebracho y hierro forjado aún se conserva intacta como testimonio de la ingeniería preindustrial.
+                        </p>
+                        <blockquote class="wiki-quote" contenteditable="true">
+                            "El molino no era únicamente una factoría de harina; era el centro neurálgico donde los campesinos de diez leguas a la redonda se encontraban para debatir el precio del grano y las noticias del país."
+                            <footer class="quote-author">— Archivo de Historia Oral, Cuaderno Nº 12.</footer>
+                        </blockquote>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            En 1998, el edificio fue declarado Sitio de Interés Histórico y Social. Actualmente sus naves laterales albergan talleres comunitarios de alfarería, grabado y reuniones vecinales.
+                        </p>
+                    </div>
+
+                    <!-- Monumento 3 -->
+                    <div class="wiki-section" data-section-id="mon-fuente-memoria">
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">La Fuente de la Memoria y los Derechos Comunitarios</h2>
+                            <span class="monument-type-tag">Monolito y Espacio de Reflexión</span>
+                        </div>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Inaugurada en el año 2003 en el Paseo de los Sauces, la fuente circular de piedra caliza conmemora las luchas sociales por la vivienda digna, la justicia comunitaria y la preservación ambiental del bosque ribereño. El agua constante simboliza la continuidad ininterrumpida de las generaciones que defienden la dignidad de su territorio.
+                        </p>
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Cada 24 de marzo y durante los aniversarios de la fundación comunitaria, los vecinos se congregan en torno a la fuente para colocar placas recordatorias y realizar lecturas colectivas de testimonios históricos.
+                        </p>
+                    </div>
+
+                    <!-- Botón para insertar nuevo monumento -->
+                    <div class="wiki-append-section">
+                        <button type="button" id="btn-add-paragraph-monuments" class="btn btn-outline">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            + Añadir nuevo hito o monumento
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Barra Lateral: Resumen de Monumentos -->
+                <aside class="wiki-sidebar">
+                    <div class="wiki-infobox">
+                        <div class="infobox-header">
+                            <h3 class="infobox-title" contenteditable="true">Inventario de Monumentos</h3>
+                            <span class="infobox-subtitle" contenteditable="true">Registro Municipal Nº 104</span>
+                        </div>
+                        <div class="infobox-figure">
+                            <div class="infobox-placeholder-badge">
+                                <span>🗿</span>
+                                <small>Hitos Catalogados</small>
+                            </div>
+                        </div>
+                        <table class="infobox-table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Monumentos Totales</th>
+                                    <td contenteditable="true">14 registrados (3 destacados)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Materiales predominantes</th>
+                                    <td contenteditable="true">Bronce, Granito, Madera de Quebracho</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Monumento más antiguo</th>
+                                    <td contenteditable="true">Molino Hidráulico (1938)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Organismo custodio</th>
+                                    <td contenteditable="true">Comisión Vecinal de Patrimonio</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Acceso al público</th>
+                                    <td contenteditable="true">Libre y gratuito todo el año</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="wiki-toc-card">
+                        <h4 class="toc-title">Monumentos en esta página</h4>
+                        <ol class="toc-list" id="monuments-toc-list">
+                            <li><a href="#mon-plaza-fundadores">1. Monumento a los Fundadores</a></li>
+                            <li><a href="#mon-antiguo-molino">2. El Viejo Molino Hidráulico</a></li>
+                            <li><a href="#mon-fuente-memoria">3. La Fuente de la Memoria</a></li>
+                        </ol>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Notificación emergente (Toast) -->
+    <div id="wiki-toast" class="wiki-toast" role="status" aria-live="polite">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message" id="toast-message">Cambios guardados correctamente</span>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h4>Historicus</h4>
+                <p>Plataforma comunitaria de memoria histórica local y archivo abierto.</p>
+            </div>
+            <div class="footer-meta">
+                <p>El conocimiento histórico pertenece a la comunidad. Todos los textos están abiertos a la edición y mejora colectiva.</p>
+                <p class="copyright">&copy; 2026 Registro y Documentación del Barrio. Licencia de Contenido Libre de Memoria.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de lógica de la plataforma wiki -->
+    <script src="main.js"></script>
+</body>
+
+</html>

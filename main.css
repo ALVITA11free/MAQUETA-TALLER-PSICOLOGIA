@@ -1,0 +1,837 @@
+/* ==========================================================================
+   Historicus - Plataforma de Memoria Histórica Local & Wiki Comunitaria
+   ========================================================================== */
+
+/* Variables de Color y Sistema de Diseño */
+:root {
+    --bg-page: #FDFBF7;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #F6F1EA;
+    --bg-accent: #EFE7DC;
+    
+    --text-main: #2C1810;
+    --text-muted: #6B5D54;
+    --text-light: #8E7F75;
+    
+    --primary: #3E2723;
+    --primary-hover: #261613;
+    --terracotta: #A64B2A;
+    --terracotta-hover: #8C3E21;
+    --gold: #C59B27;
+    --gold-light: #FDF4D8;
+    --gold-border: #E8CA72;
+    
+    --border-color: #E2D7CC;
+    --border-subtle: #EFE8DF;
+    
+    --font-heading: 'Lora', 'Georgia', serif;
+    --font-brand: 'Cinzel', 'Times New Roman', serif;
+    --font-body: 'Lora', 'Georgia', serif;
+    --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    
+    --shadow-sm: 0 1px 3px rgba(44, 24, 16, 0.05);
+    --shadow-md: 0 4px 12px rgba(44, 24, 16, 0.08);
+    --shadow-lg: 0 10px 25px rgba(44, 24, 16, 0.12);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+/* Reset y Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.75;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Tipografía de Encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   1. TOP NAVIGATION MENU (Estrictamente 2 enlaces: Home y Monuments)
+   ========================================================================== */
+.site-header {
+    background-color: #FAF6F0;
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    cursor: default;
+}
+
+.brand-emblem {
+    font-size: 2rem;
+    background: var(--bg-accent);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.site-title {
+    font-family: var(--font-brand);
+    font-size: 1.75rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin: 0;
+}
+
+.site-subtitle {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--terracotta);
+    font-weight: 700;
+    display: block;
+}
+
+/* Navegación Principal */
+.main-nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.75rem;
+    background: rgba(226, 215, 204, 0.4);
+    padding: 0.35rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.nav-link {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.55rem 1.4rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.nav-link.active {
+    color: #FFFFFF;
+    background-color: var(--primary);
+    box-shadow: 0 2px 6px rgba(62, 39, 35, 0.25);
+}
+
+/* ==========================================================================
+   2. WIKI NOTICE & GLOBAL ACTIONS BAR
+   ========================================================================== */
+.wiki-notice-bar {
+    background-color: #FAF4EB;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.85rem 2rem;
+    font-family: var(--font-ui);
+    font-size: 0.88rem;
+}
+
+.wiki-notice-content {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.notice-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-muted);
+    max-width: 720px;
+}
+
+.badge-live-wiki {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--gold-light);
+    color: #7D5700;
+    border: 1px solid var(--gold-border);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.wiki-global-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding-right: 0.5rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #2E7D32;
+    transition: background-color 0.3s ease;
+}
+
+.status-indicator.unsaved .status-dot {
+    background-color: var(--gold);
+    box-shadow: 0 0 6px var(--gold);
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--terracotta);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: var(--terracotta-hover);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-subtle);
+    border-color: var(--text-light);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px dashed var(--terracotta);
+    color: var(--terracotta);
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.btn-outline:hover {
+    background-color: rgba(166, 75, 42, 0.06);
+}
+
+/* ==========================================================================
+   3. FLOATING EDITOR FORMATTING TOOLBAR
+   ========================================================================== */
+.floating-toolbar {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    background: #2C1810;
+    color: #FFFFFF;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    gap: 0.3rem;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.floating-toolbar.visible {
+    display: flex;
+    animation: fadeIn 0.15s ease-out;
+}
+
+.floating-toolbar button {
+    background: transparent;
+    border: none;
+    color: #F6F1EA;
+    padding: 0.3rem 0.6rem;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.floating-toolbar button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+}
+
+.toolbar-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.25);
+    margin: 0 0.2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   4. MAIN WIKI LAYOUT & GRID
+   ========================================================================== */
+.main-layout {
+    flex: 1;
+    max-width: 1240px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.wiki-view {
+    display: block;
+    animation: fadeInView 0.25s ease-in-out;
+}
+
+.wiki-view.hidden {
+    display: none;
+}
+
+@keyframes fadeInView {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Metadatos superiores */
+.wiki-header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--font-ui);
+    font-size: 0.88rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.meta-breadcrumbs {
+    color: var(--text-muted);
+}
+
+.meta-breadcrumbs strong {
+    color: var(--primary);
+}
+
+.wiki-stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wiki-badge-editable {
+    background: #E8F5E9;
+    color: #1B5E20;
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: 1px solid #C8E6C9;
+}
+
+/* Layout Grid del Artículo Wiki */
+.wiki-article-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.wiki-article {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 3rem;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   5. WIKI CONTENT SECTIONS & EDITABLE BEHAVIOR
+   ========================================================================== */
+.wiki-section {
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border-subtle);
+}
+
+.wiki-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+}
+
+.section-heading-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.2rem;
+    gap: 1rem;
+}
+
+.wiki-h2 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    border-bottom: 1px solid var(--gold-border);
+    padding-bottom: 0.35rem;
+    flex: 1;
+    position: relative;
+}
+
+.edit-hint-tag {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.monument-type-tag {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    background-color: var(--bg-subtle);
+    color: var(--terracotta);
+    border: 1px solid var(--border-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Párrafos y Citas Editables */
+.wiki-editable-p {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: var(--text-main);
+    margin-bottom: 1.25rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    outline: none;
+    position: relative;
+}
+
+.wiki-quote {
+    margin: 1.5rem 0;
+    padding: 1.25rem 1.75rem;
+    background-color: var(--bg-subtle);
+    border-left: 4px solid var(--terracotta);
+    font-style: italic;
+    font-size: 1.12rem;
+    color: var(--primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.quote-author {
+    margin-top: 0.75rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-style: normal;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Estados Interactivos de Edición (Open Wiki Visual Cues) */
+[contenteditable="true"] {
+    cursor: text;
+    border: 1px solid transparent;
+}
+
+[contenteditable="true"]:hover {
+    background-color: rgba(253, 244, 216, 0.45);
+    border: 1px dashed var(--gold-border);
+}
+
+[contenteditable="true"]:focus {
+    background-color: #FFFFFF;
+    border: 1px solid var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(166, 75, 42, 0.15);
+    border-radius: var(--radius-sm);
+}
+
+/* Indicador de Ayuda para el Cursor */
+.wiki-editable-p:hover::after,
+.wiki-h2:hover::after,
+.wiki-quote:hover::after {
+    content: " ✏️";
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.wiki-append-section {
+    margin-top: 2rem;
+    padding-top: 1rem;
+}
+
+/* ==========================================================================
+   6. SIDEBAR: WIKI INFOBOX & TABLE OF CONTENTS
+   ========================================================================= */
+.wiki-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    position: sticky;
+    top: 5rem;
+}
+
+/* Infobox Estilo Wikipedia / Patrimonio */
+.wiki-infobox {
+    background-color: #FAF7F2;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    font-family: var(--font-ui);
+}
+
+.infobox-header {
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.infobox-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin: 0;
+    outline: none;
+}
+
+.infobox-subtitle {
+    font-size: 0.78rem;
+    color: var(--terracotta);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-top: 0.2rem;
+    outline: none;
+}
+
+.infobox-figure {
+    background-color: var(--bg-surface);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem 0.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.infobox-placeholder-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.infobox-placeholder-badge span {
+    font-size: 2.2rem;
+}
+
+.infobox-placeholder-badge small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.infobox-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.infobox-table tr {
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.infobox-table tr:last-child {
+    border-bottom: none;
+}
+
+.infobox-table th {
+    text-align: left;
+    padding: 0.6rem 0.5rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    width: 45%;
+    vertical-align: top;
+}
+
+.infobox-table td {
+    padding: 0.6rem 0.5rem;
+    color: var(--text-main);
+    font-weight: 500;
+    outline: none;
+}
+
+.infobox-table td:hover {
+    background-color: var(--gold-light);
+    border-radius: 2px;
+}
+
+/* Tabla de Contenidos (TOC) */
+.wiki-toc-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    font-family: var(--font-ui);
+}
+
+.toc-title {
+    font-size: 0.95rem;
+    color: var(--primary);
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.4rem;
+}
+
+.toc-list {
+    padding-left: 1.2rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.toc-list li {
+    margin-bottom: 0.5rem;
+}
+
+.toc-list a {
+    color: var(--terracotta);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.toc-list a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.toc-footnote {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.78rem;
+    color: var(--text-light);
+}
+
+/* ==========================================================================
+   7. TOAST NOTIFICATION
+   ========================================================================== */
+.wiki-toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #2C1810;
+    color: #FFFFFF;
+    padding: 0.85rem 1.4rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transform: translateY(120%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2000;
+    border-left: 4px solid var(--gold);
+}
+
+.wiki-toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    background-color: var(--gold);
+    color: var(--primary);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+.site-footer {
+    background-color: #21130D;
+    color: #E2D7CC;
+    border-top: 4px solid var(--terracotta);
+    padding: 2.5rem 2rem 2rem;
+    margin-top: auto;
+    font-family: var(--font-ui);
+    font-size: 0.88rem;
+}
+
+.footer-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-brand h4 {
+    font-family: var(--font-brand);
+    font-size: 1.4rem;
+    color: #FFFFFF;
+    margin-bottom: 0.4rem;
+}
+
+.footer-brand p {
+    color: #B5A89E;
+    max-width: 380px;
+}
+
+.footer-meta {
+    max-width: 480px;
+    color: #B5A89E;
+}
+
+.footer-meta .copyright {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: #8E7F75;
+}
+
+/* ==========================================================================
+   9. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 960px) {
+    .wiki-article-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wiki-sidebar {
+        position: static;
+        order: -1;
+    }
+
+    .wiki-article {
+        padding: 1.75rem 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav-container {
+        padding: 0.85rem 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .wiki-notice-bar {
+        padding: 0.75rem 1rem;
+    }
+
+    .wiki-notice-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-layout {
+        padding: 0 1rem;
+        margin: 1.25rem auto;
+    }
+
+    .section-heading-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+    }
+
+    .wiki-h2 {
+        font-size: 1.35rem;
+    }
+
+    .wiki-toast {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
