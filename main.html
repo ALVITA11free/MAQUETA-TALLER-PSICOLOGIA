@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memoria Histórica Local | Archivo Abierto y Colaborativo</title>
-    <meta name="description" content="Plataforma comunitaria de memoria histórica local y monumentos. Archivo abierto y editable por los vecinos y visitantes.">
+    <title>Memoria Histórica de Tuluá | Archivo Abierto y Colaborativo</title>
+    <meta name="description" content="Plataforma comunitaria de memoria histórica, patrimonio cultural y monumentos de Tuluá, Valle del Cauca. Archivo abierto y editable.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,18 +14,18 @@
 </head>
 
 <body>
-    <!-- Encabezado Principal con exactamente dos enlaces -->
+    <!-- Encabezado Principal con Navegación: 'Home', 'Monuments', 'Add Monument' -->
     <header class="site-header">
         <div class="nav-container">
             <div class="brand-container">
                 <span class="brand-emblem">🏛️</span>
                 <div class="brand-text">
-                    <h1 class="site-title">Historicus</h1>
-                    <span class="site-subtitle">Archivo Abierto de Memoria Local</span>
+                    <h1 class="site-title">Historicus Tuluá</h1>
+                    <span class="site-subtitle">Archivo de Memoria y Patrimonio Tulueño</span>
                 </div>
             </div>
             
-            <!-- Navegación estrictamente con dos enlaces: 'Home' y 'Monuments' -->
+            <!-- Menú de navegación con las 3 pestañas requeridas -->
             <nav aria-label="Navegación principal">
                 <ul class="main-nav-links">
                     <li>
@@ -33,6 +33,11 @@
                     </li>
                     <li>
                         <a href="#monuments" id="nav-monuments" class="nav-link">Monuments</a>
+                    </li>
+                    <li>
+                        <a href="#add-monument" id="nav-add-monument" class="nav-link nav-link-highlight">
+                            <span class="nav-icon">+</span> Add Monument
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -43,8 +48,8 @@
     <section class="wiki-notice-bar" aria-label="Aviso de edición comunitaria">
         <div class="wiki-notice-content">
             <div class="notice-info">
-                <span class="badge-live-wiki">📖 Wiki Abierta</span>
-                <p>Todos los textos, relatos y secciones de esta plataforma son <strong>abiertamente editables</strong> por cualquier vecino o investigador. Haz clic directamente sobre cualquier texto para editarlo.</p>
+                <span class="badge-live-wiki">📖 Archivo Wiki Abierto</span>
+                <p>Todos los textos, crónicas y reseñas de los lugares patrimoniales de Tuluá son <strong>abiertamente editables</strong> por la ciudadanía. Haz clic directamente sobre cualquier texto para editarlo.</p>
             </div>
             <div class="wiki-global-actions">
                 <span id="save-status-indicator" class="status-indicator">
@@ -78,15 +83,70 @@
     <main id="main-content" class="main-layout">
         
         <!-- ============================================== -->
-        <!-- VISTA 1: HOME (Crónica y Memoria del Barrio)   -->
+        <!-- VISTA 1: HOME (Crónica + Galería Flotante)     -->
         <!-- ============================================== -->
         <div id="view-home" class="wiki-view active">
+            
+            <!-- Hero / Sección Destacada con Galería de Imágenes Flotantes de Monumentos de Tuluá -->
+            <section class="floating-monuments-section" aria-label="Galería interactiva de monumentos de Tuluá">
+                <div class="floating-section-header">
+                    <div class="floating-badge">📍 Tuluá, Valle del Cauca</div>
+                    <h2 class="floating-section-title">Hitos Históricos y Espacios Emblemáticos</h2>
+                    <p class="floating-section-subtitle">Haz clic en cualquiera de los lugares destacados para acceder directamente a su sección monográfica completa con su reseña histórica y cultural.</p>
+                </div>
+
+                <!-- Grilla de Tarjetas e Imágenes Flotantes con Micro-animación -->
+                <div class="floating-cards-container" id="home-floating-monuments-grid">
+                    
+                    <!-- Tarjeta Flotante 1: Iglesia de los Franciscanos -->
+                    <article class="floating-monument-card float-anim-1" data-monument-target="mon-iglesia-franciscanos" tabindex="0" role="button" aria-label="Ver Iglesia de los Franciscanos">
+                        <div class="floating-placeholder-box">
+                            <span class="placeholder-tag">[El usuario subirá la imagen aquí]</span>
+                            <span class="floating-pill-tag">Templo Histórico (1931 - 1946)</span>
+                        </div>
+                        <div class="floating-card-body">
+                            <h3 class="floating-card-title">Iglesia de los Franciscanos</h3>
+                            <p class="floating-card-desc">Santuario mariano y convento de la orden franciscana, referente arquitectónico de las torres rojas en Tuluá.</p>
+                            <span class="floating-cta">Ver sección detallada &rarr;</span>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta Flotante 2: Parque de la Familia -->
+                    <article class="floating-monument-card float-anim-2" data-monument-target="mon-parque-familia" tabindex="0" role="button" aria-label="Ver Parque de la Familia">
+                        <div class="floating-placeholder-box">
+                            <span class="placeholder-tag">[El usuario subirá la imagen aquí]</span>
+                            <span class="floating-pill-tag">Espacio Público &amp; Convivencia</span>
+                        </div>
+                        <div class="floating-card-body">
+                            <h3 class="floating-card-title">Parque de la Familia</h3>
+                            <p class="floating-card-desc">Epicentro del encuentro ciudadano, recreación intergeneracional y vida comunitaria en el barrio Fátima.</p>
+                            <span class="floating-cta">Ver sección detallada &rarr;</span>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta Flotante 3: Hospital Departamental Tomás Uribe Uribe -->
+                    <article class="floating-monument-card float-anim-3" data-monument-target="mon-hospital-tomas-uribe" tabindex="0" role="button" aria-label="Ver Hospital Departamental Tomás Uribe Uribe">
+                        <div class="floating-placeholder-box">
+                            <span class="placeholder-tag">[El usuario subirá la imagen aquí]</span>
+                            <span class="floating-pill-tag">Patrimonio Cívico &amp; Salud (1947)</span>
+                        </div>
+                        <div class="floating-card-body">
+                            <h3 class="floating-card-title">Hospital Tomás Uribe Uribe</h3>
+                            <p class="floating-card-desc">Símbolo del civismo y la salud pública del centro del Valle, fundado en 1947 tras la histórica donación de tierras.</p>
+                            <span class="floating-cta">Ver sección detallada &rarr;</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Separador Editorial -->
             <div class="wiki-header-meta">
                 <div class="meta-breadcrumbs">
-                    <span>Historicus</span> &rsaquo; <span>Archivo Comunitario</span> &rsaquo; <strong>Historia y Orígenes</strong>
+                    <span>Historicus Tuluá</span> &rsaquo; <span>Archivo Comunitario</span> &rsaquo; <strong>Historia y Desarrollo Urbano</strong>
                 </div>
                 <div class="wiki-stats">
-                    <span id="home-word-count">📊 840 palabras</span>
+                    <span id="home-word-count">📊 920 palabras</span>
                     <span class="wiki-badge-editable">✏️ Edición en vivo activada</span>
                 </div>
             </div>
@@ -94,103 +154,84 @@
             <div class="wiki-article-grid">
                 <!-- Columna Principal de Contenido Wiki -->
                 <article class="wiki-article" id="home-editable-content">
-                    <div class="wiki-section" data-section-id="sec-origenes">
+                    <div class="wiki-section" data-section-id="sec-origenes-tulua">
                         <div class="section-heading-bar">
-                            <h2 class="wiki-h2" contenteditable="true">1. Orígenes y Hechos Fundacionales (1940 - 1960)</h2>
+                            <h2 class="wiki-h2" contenteditable="true">1. Tuluá: 'Corazón del Valle' y Cruce de Caminos</h2>
                             <div class="section-actions">
                                 <span class="edit-hint-tag">Párrafos editables</span>
                             </div>
                         </div>
                         <p class="wiki-editable-p" contenteditable="true">
-                            Los primeros asentamientos de nuestra comunidad se consolidaron a mediados de la década de 1940 alrededor del antiguo molino de trigo y el cruce del ferrocarril interurbano. Familias obreras y artesanos procedentes de diversas regiones rurales establecieron las primeras manzanas residenciales, levantando viviendas con adobe prensado, madera de roble nativo y tejas cocidas al sol.
+                            Situada en el corazón geográfico del departamento del Valle del Cauca, la ciudad de Tuluá ha consolidado su identidad como un polo de intercambio comercial, agrícola, cultural y cívico indiscutible. Desde sus orígenes prehispánicos y la posterior fundación republicana, el río Tuluá y los fértiles valles circundantes marcaron el ritmo de un crecimiento urbano impulsado por el esfuerzo comunitario de sucesivas generaciones de familias campesinas, artesanos y comerciantes.
                         </p>
                         <p class="wiki-editable-p" contenteditable="true">
-                            En 1952, la asamblea vecinal impulsó la construcción comunitaria de la primera acequia de regadío y el tendido del alumbrado público rudimentario. Las actas históricas conservadas en el archivo barrial destacan el rol protagónico de las sociedades de socorros mutuos, que no solo financiaban obras sanitarias colectivas, sino que organizaban bibliotecas populares y veladas culturales nocturnas.
+                            Durante el siglo XX, el trazado del ferrocarril y la posterior apertura de vías intermunicipales catapultaron al municipio como nodo estratégico del occidente colombiano. La edificación de hitos como la Iglesia de los Franciscanos, el hospital departamental y los espacios de recreación pública reflejan una vocación cívica orientada al bienestar colectivo y a la preservación del patrimonio material e inmaterial.
                         </p>
                     </div>
 
-                    <div class="wiki-section" data-section-id="sec-oficios">
+                    <div class="wiki-section" data-section-id="sec-patrimonio-tulua">
                         <div class="section-heading-bar">
-                            <h2 class="wiki-h2" contenteditable="true">2. Oficios Tradicionales y Vida Cotidiana</h2>
+                            <h2 class="wiki-h2" contenteditable="true">2. Identidad, Arquitectura y Tejido Social</h2>
                             <div class="section-actions">
                                 <span class="edit-hint-tag">Párrafos editables</span>
                             </div>
                         </div>
                         <p class="wiki-editable-p" contenteditable="true">
-                            Durante más de cuatro décadas, la identidad barrial estuvo estrechamente vinculada a los talleres de herrería forjada, curtiembres artesanales y panaderías con hornos de leña continua. La calle Mayor albergaba el mercado semanal donde se intercambiaban productos agrícolas de los valles cercanos, cerámicas esmaltadas y tejidos a telar.
+                            La memoria tulueña se nutre de sus plazas arboladas, sus templos de ladrillo visto y sus barrios tradicionales como Fátima, Victoria y Céspedes. Las festividades populares, la gastronomía típica vallecaucana y las crónicas orales narradas en los parques constituyen un patrimonio vivo que este archivo comunitario busca documentar de forma permanente.
                         </p>
                         <blockquote class="wiki-quote" contenteditable="true">
-                            "El sonido del yunque matutino y el aroma a pan caliente recién amasado eran el reloj natural que despertaba a todo el vecindario antes del amanecer."
-                            <footer class="quote-author">— Testimonio oral de Doña Carmen Valenzuela (1928 - 2018), cronista popular del barrio.</footer>
+                            "Tuluá no es solo su clima cálido y su comercio vibrante; es la fuerza solidaria de una ciudadanía que levantó sus templos, sus hospitales y sus parques a base de civismo y amor a la tierra."
+                            <footer class="quote-author">— Cuadernos de Historia y Crónica del Valle del Cauca.</footer>
                         </blockquote>
                         <p class="wiki-editable-p" contenteditable="true">
-                            Las lavanderas del río y los zapateros remendones constituían redes de apoyo solidario vitales para las familias en épocas de crisis económica. Toda esta memoria intangible sigue viva gracias a las transmisiones orales que los vecinos recopilan en este espacio interactivo.
+                            A través de esta plataforma digital abierta, cada habitante e investigador puede complementar, precisar y editar libremente los relatos históricos de cada rincón de nuestra ciudad.
                         </p>
                     </div>
 
-                    <div class="wiki-section" data-section-id="sec-transformacion">
-                        <div class="section-heading-bar">
-                            <h2 class="wiki-h2" contenteditable="true">3. Movimientos Vecinales y Transformación Urbana (1970 - 1990)</h2>
-                            <div class="section-actions">
-                                <span class="edit-hint-tag">Párrafos editables</span>
-                            </div>
-                        </div>
-                        <p class="wiki-editable-p" contenteditable="true">
-                            Con la llegada de la industrialización en los años setenta, el barrio experimentó un crecimiento demográfico exponencial. Los comités de pobladores se movilizaron para exigir la pavimentación de calzadas, la edificación de centros de salud primaria y la preservación de los parques públicos frente al avance de loteos no planificados.
-                        </p>
-                        <p class="wiki-editable-p" contenteditable="true">
-                            El centro cívico y el teatro parroquial se convirtieron en los epicentros de la resistencia cultural y el debate social, albergando festivales de folklore independiente y asambleas democráticas que sentaron las bases del actual modelo de gestión patrimonial comunitaria.
-                        </p>
-                    </div>
-
-                    <!-- Botón para insertar nuevo párrafo / sección -->
+                    <!-- Botón para insertar nuevo párrafo -->
                     <div class="wiki-append-section">
                         <button type="button" id="btn-add-paragraph-home" class="btn btn-outline">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            + Añadir nuevo párrafo a la crónica
+                            + Añadir nuevo párrafo a la crónica de Tuluá
                         </button>
                     </div>
                 </article>
 
                 <!-- Barra Lateral: Ficha Técnica e Índice Wiki -->
                 <aside class="wiki-sidebar">
-                    <!-- Ficha Informativa / Infobox Estilo Wikipedia -->
+                    <!-- Ficha Informativa / Infobox -->
                     <div class="wiki-infobox">
                         <div class="infobox-header">
-                            <h3 class="infobox-title" contenteditable="true">Resumen del Territorio Histórico</h3>
-                            <span class="infobox-subtitle" contenteditable="true">Distrito Patrimonial Nº 4</span>
+                            <h3 class="infobox-title" contenteditable="true">Municipio de Tuluá</h3>
+                            <span class="infobox-subtitle" contenteditable="true">Valle del Cauca, Colombia</span>
                         </div>
                         <div class="infobox-figure">
                             <div class="infobox-placeholder-badge">
                                 <span>🏛️</span>
-                                <small>Sello de Memoria Viva</small>
+                                <small>Patrimonio Cultural y Cívico</small>
                             </div>
                         </div>
                         <table class="infobox-table">
                             <tbody>
                                 <tr>
-                                    <th scope="row">Año de fundación</th>
-                                    <td contenteditable="true">1946 (Registro Municipal)</td>
+                                    <th scope="row">Denominación popular</th>
+                                    <td contenteditable="true">Corazón del Valle / Villa de Céspedes</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Primer Alcalde Comunal</th>
-                                    <td contenteditable="true">Don Esteban Morales G.</td>
+                                    <th scope="row">Ubicación</th>
+                                    <td contenteditable="true">Centro del Valle del Cauca</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Extensión patrimonial</th>
-                                    <td contenteditable="true">42 hectáreas protegidas</td>
+                                    <th scope="row">Altitud media</th>
+                                    <td contenteditable="true">960 m s. n. m.</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Población originaria</th>
-                                    <td contenteditable="true">~1,850 habitantes (1950)</td>
+                                    <th scope="row">Hitos destacados</th>
+                                    <td contenteditable="true">Iglesia Franciscanos, Hosp. Tomás Uribe, Pq. Familia</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Hito identitario</th>
-                                    <td contenteditable="true">Viejo Molino &amp; Estación Central</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Estado de conservación</th>
-                                    <td contenteditable="true">Zona de Interés Histórico Local</td>
+                                    <th scope="row">Protección patrimonial</th>
+                                    <td contenteditable="true">Plan de Ordenamiento Territorial (POT)</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -198,11 +239,10 @@
 
                     <!-- Tabla de Contenidos Dinámica -->
                     <div class="wiki-toc-card">
-                        <h4 class="toc-title">Índice de Secciones</h4>
+                        <h4 class="toc-title">Índice de la Crónica</h4>
                         <ol class="toc-list" id="home-toc-list">
-                            <li><a href="#sec-origenes">1. Orígenes y Hechos Fundacionales</a></li>
-                            <li><a href="#sec-oficios">2. Oficios Tradicionales y Vida Cotidiana</a></li>
-                            <li><a href="#sec-transformacion">3. Movimientos Vecinales y Transformación Urbana</a></li>
+                            <li><a href="#sec-origenes-tulua">1. Tuluá: 'Corazón del Valle'</a></li>
+                            <li><a href="#sec-patrimonio-tulua">2. Identidad y Tejido Social</a></li>
                         </ol>
                         <div class="toc-footnote">
                             <p>💡 <em>Cualquier cambio de texto se refleja y guarda al instante en tu navegador.</em></p>
@@ -213,15 +253,15 @@
         </div>
 
         <!-- ============================================== -->
-        <!-- VISTA 2: MONUMENTS (Monumentos y Patrimonio)  -->
+        <!-- VISTA 2: MONUMENTS (Lugares Históricos de Tuluá) -->
         <!-- ============================================== -->
         <div id="view-monuments" class="wiki-view hidden">
             <div class="wiki-header-meta">
                 <div class="meta-breadcrumbs">
-                    <span>Historicus</span> &rsaquo; <span>Catálogo Patrimonial</span> &rsaquo; <strong>Monumentos y Lugares Conmemorativos</strong>
+                    <span>Historicus Tuluá</span> &rsaquo; <span>Catálogo Patrimonial</span> &rsaquo; <strong>Lugares y Monumentos de Tuluá</strong>
                 </div>
                 <div class="wiki-stats">
-                    <span id="monuments-word-count">📊 720 palabras</span>
+                    <span id="monuments-word-count">📊 890 palabras</span>
                     <span class="wiki-badge-editable">✏️ Edición en vivo activada</span>
                 </div>
             </div>
@@ -230,109 +270,297 @@
                 <!-- Columna Principal de Monumentos -->
                 <article class="wiki-article" id="monuments-editable-content">
                     
-                    <!-- Monumento 1 -->
-                    <div class="wiki-section" data-section-id="mon-plaza-fundadores">
-                        <div class="section-heading-bar">
-                            <h2 class="wiki-h2" contenteditable="true">Monumento a los Fundadores y Pioneros del Ferrocarril</h2>
-                            <span class="monument-type-tag">Estatua de Bronce y Granito</span>
+                    <!-- ======================================================= -->
+                    <!-- MONUMENTO 1: IGLESIA DE LOS FRANCISCANOS (TULUÁ)        -->
+                    <!-- ======================================================= -->
+                    <div class="wiki-section monument-detail-block" id="mon-iglesia-franciscanos" data-section-id="mon-iglesia-franciscanos">
+                        
+                        <!-- Contenedor explícito solicitado: [El usuario subirá la imagen aquí] -->
+                        <div class="user-image-placeholder-container">
+                            <div class="placeholder-graphic-box">
+                                <span class="placeholder-icon">🖼️</span>
+                                <span class="placeholder-exact-text">[El usuario subirá la imagen aquí]</span>
+                                <small class="placeholder-caption-sub">Registro visual: Fachada, torres rojas y reloj del Templo Franciscano</small>
+                            </div>
                         </div>
-                        <p class="wiki-editable-p" contenteditable="true">
-                            Erigido en octubre de 1964 en la Plaza de la Concordia, este conjunto escultórico rinde homenaje a los trescientos obreros que tendieron el primer ramal ferroviario que conectó nuestro distrito con la capital provincial. La obra fue cincelada por el maestro escultor local Arturo Benítez a partir de piezas de bronce fundido donadas por las familias de los propios trabajadores.
-                        </p>
-                        <p class="wiki-editable-p" contenteditable="true">
-                            En su pedestal octogonal de granito gris se hallan grabados los nombres de las brigadas de construcción, junto a un bajo relieve que ilustra la primera locomotora a vapor cruzando el viaducto del arroyo El Sauce.
-                        </p>
-                    </div>
 
-                    <!-- Monumento 2 -->
-                    <div class="wiki-section" data-section-id="mon-antiguo-molino">
                         <div class="section-heading-bar">
-                            <h2 class="wiki-h2" contenteditable="true">El Viejo Molino Hidráulico San Cayetano</h2>
-                            <span class="monument-type-tag">Patrimonio Arquitectónico e Industrial</span>
+                            <h2 class="wiki-h2" contenteditable="true">Iglesia de los Franciscanos (Parroquia Nuestra Señora del Carmen)</h2>
+                            <span class="monument-type-tag">Patrimonio Arquitectónico y Religioso</span>
                         </div>
+                        
                         <p class="wiki-editable-p" contenteditable="true">
-                            Construido en 1938 junto a la caída natural del río, el Molino San Cayetano funcionó ininterrumpidamente durante cincuenta años como el principal centro de molienda y acopio de trigo y maíz de la zona. Su imponente rueda hidráulica de madera de quebracho y hierro forjado aún se conserva intacta como testimonio de la ingeniería preindustrial.
+                            La <strong>Iglesia de los Franciscanos</strong>, consagrada bajo la advocación de Nuestra Señora del Carmen y administrada por la Orden de Frailes Menores, constituye uno de los más insignes hitos arquitectónicos, culturales y espirituales de Tuluá. Su presencia en la ciudad se remonta a 1930, cuando el Comisario Provincial Fray Manuel Aníbal Siabato emitió el decreto de fundación conventual, arribando los primeros frailes a territorio tulueño en febrero de 1931.
                         </p>
+                        
+                        <p class="wiki-editable-p" contenteditable="true">
+                            El predio para su construcción fue donado generosamente en 1931 por la distinguida dama Doña Victoria Rojas de Victoria. Los planos del conjunto fueron concebidos y aportados por el Hermano Silvestre, religioso de la congregación redentorista. La bendición de la primera piedra del convento (bajo el patrocinio de San Antonio) se celebró el 21 de junio de 1931, mientras que las excavaciones para los cimientos del majestuoso templo iniciaron el 23 de julio de 1934, abriendo sus puertas al servicio litúrgico y ciudadano el 1 de septiembre de 1946.
+                        </p>
+
                         <blockquote class="wiki-quote" contenteditable="true">
-                            "El molino no era únicamente una factoría de harina; era el centro neurálgico donde los campesinos de diez leguas a la redonda se encontraban para debatir el precio del grano y las noticias del país."
-                            <footer class="quote-author">— Archivo de Historia Oral, Cuaderno Nº 12.</footer>
+                            "El 4 de octubre de 1947 fue solemnemente bendecida la estatua de San Francisco de Asís que corona el frontispicio del templo entre sus dos imponentes torres rojas, erigiéndose en custodio de la fe y la memoria cívica de Tuluá."
+                            <footer class="quote-author">— Archivo Histórico de la Provincia Franciscana &amp; POT Municipal.</footer>
                         </blockquote>
+
                         <p class="wiki-editable-p" contenteditable="true">
-                            En 1998, el edificio fue declarado Sitio de Interés Histórico y Social. Actualmente sus naves laterales albergan talleres comunitarios de alfarería, grabado y reuniones vecinales.
+                            Erigida oficialmente como parroquia el 8 de diciembre de 1951 y reconocida formalmente dentro del Plan de Ordenamiento Territorial (POT) de Tuluá como parte esencial del patrimonio arquitectónico e identidad local, su fisonomía de esbeltas torres carmesíes, arcos ojivales y reloj público permanece como el perfil visual más emblemático en la memoria de los tulueños.
                         </p>
                     </div>
 
-                    <!-- Monumento 3 -->
-                    <div class="wiki-section" data-section-id="mon-fuente-memoria">
-                        <div class="section-heading-bar">
-                            <h2 class="wiki-h2" contenteditable="true">La Fuente de la Memoria y los Derechos Comunitarios</h2>
-                            <span class="monument-type-tag">Monolito y Espacio de Reflexión</span>
+                    <!-- ======================================================= -->
+                    <!-- MONUMENTO 2: PARQUE DE LA FAMILIA (TULUÁ)               -->
+                    <!-- ======================================================= -->
+                    <div class="wiki-section monument-detail-block" id="mon-parque-familia" data-section-id="mon-parque-familia">
+                        
+                        <!-- Contenedor explícito solicitado: [El usuario subirá la imagen aquí] -->
+                        <div class="user-image-placeholder-container">
+                            <div class="placeholder-graphic-box">
+                                <span class="placeholder-icon">🌳</span>
+                                <span class="placeholder-exact-text">[El usuario subirá la imagen aquí]</span>
+                                <small class="placeholder-caption-sub">Registro visual: Zonas verdes, pista recreativa y convivencia familiar</small>
+                            </div>
                         </div>
+
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">Parque de la Familia (Barrio Fátima)</h2>
+                            <span class="monument-type-tag">Espacio Público y Convivencia Social</span>
+                        </div>
+
                         <p class="wiki-editable-p" contenteditable="true">
-                            Inaugurada en el año 2003 en el Paseo de los Sauces, la fuente circular de piedra caliza conmemora las luchas sociales por la vivienda digna, la justicia comunitaria y la preservación ambiental del bosque ribereño. El agua constante simboliza la continuidad ininterrumpida de las generaciones que defienden la dignidad de su territorio.
+                            El <strong>Parque de la Familia</strong>, emplazado estratégicamente en el tradicional barrio Fátima entre la Calle 34 y la Carrera 36, al costado de la emblemática Institución Educativa Gimnasio del Pacífico, representa uno de los espacios públicos más vitales para el esparcimiento al aire libre, el deporte y la integración comunitaria de Tuluá.
                         </p>
+
                         <p class="wiki-editable-p" contenteditable="true">
-                            Cada 24 de marzo y durante los aniversarios de la fundación comunitaria, los vecinos se congregan en torno a la fuente para colocar placas recordatorias y realizar lecturas colectivas de testimonios históricos.
+                            Consolidado a través de iniciativas ciudadanas y planes de desarrollo urbano municipal, el parque cumple la función de pulmón verde y punto de encuentro intergeneracional. En sus circuitos circulares convergen a diario deportistas que practican patinaje, trote y ciclismo, así como adultos mayores que utilizan los parques biosaludables para el mantenimiento de su bienestar físico y emocional.
+                        </p>
+
+                        <blockquote class="wiki-quote" contenteditable="true">
+                            "El Parque de la Familia se ha transformado en el corazón del juego infantil y la cultura de barrio: desde el tradicional trencito infantil hasta las jornadas de la 'Ruta de la Felicidad', es el escenario donde los tulueños reconstruyen su tejido social y comparten en sana convivencia."
+                            <footer class="quote-author">— Registro de Memoria y Participación Ciudadana de Tuluá.</footer>
+                        </blockquote>
+
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Además de su valor recreativo, el espacio acoge regularmente ferias de emprendimiento local, presentaciones circenses, cine comunitario y jornadas descentralizadas de salud y cultura, erigiéndose como un referente indiscutible del derecho a la ciudad y a la recreación digna en el municipio.
                         </p>
                     </div>
 
-                    <!-- Botón para insertar nuevo monumento -->
+                    <!-- ======================================================= -->
+                    <!-- MONUMENTO 3: HOSPITAL TOMAS URIBE URIBE (TULUÁ)         -->
+                    <!-- ======================================================= -->
+                    <div class="wiki-section monument-detail-block" id="mon-hospital-tomas-uribe" data-section-id="mon-hospital-tomas-uribe">
+                        
+                        <!-- Contenedor explícito solicitado: [El usuario subirá la imagen aquí] -->
+                        <div class="user-image-placeholder-container">
+                            <div class="placeholder-graphic-box">
+                                <span class="placeholder-icon">🏥</span>
+                                <span class="placeholder-exact-text">[El usuario subirá la imagen aquí]</span>
+                                <small class="placeholder-caption-sub">Registro visual: Fachada principal y arquitectura del centro hospitalario</small>
+                            </div>
+                        </div>
+
+                        <div class="section-heading-bar">
+                            <h2 class="wiki-h2" contenteditable="true">Hospital Departamental Tomás Uribe Uribe de Tuluá - E.S.E.</h2>
+                            <span class="monument-type-tag">Patrimonio Cívico y Salud Pública (Fundado en 1947)</span>
+                        </div>
+
+                        <p class="wiki-editable-p" contenteditable="true">
+                            El <strong>Hospital Departamental Tomás Uribe Uribe</strong> constituye el más insigne bastión de la salud pública y el civismo del centro y norte del Valle del Cauca. Su origen se remonta al año <strong>1947</strong>, fruto de un histórico y generoso acto de filantropía comunitaria cuando Don Ernesto Ortiz M. y Don Manuel Victoria Rojas donaron un terreno de 6.400 m² con el propósito expreso de dotar a Tuluá y su área de influencia regional de un centro asistencial moderno y humanizado.
+                        </p>
+
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Bautizado en honor al ilustre médico y líder benefactor Don Tomás Uribe Uribe —figura fundamental en la historia del bienestar sanitario del Valle—, el hospital ha acompañado el crecimiento demográfico y los desafíos históricos del municipio durante casi ocho décadas de servicio ininterrumpido.
+                        </p>
+
+                        <blockquote class="wiki-quote" contenteditable="true">
+                            "Nacido de la donación desinteresada de predios por ilustres ciudadanos en 1947 y recuperado con tesón por su cuerpo médico y la ciudadanía, el Hospital Tomás Uribe Uribe es patrimonio vivo del derecho a la salud en el centro del Valle del Cauca."
+                            <footer class="quote-author">— Archivo Institucional E.S.E. Hospital Departamental Tomás Uribe Uribe.</footer>
+                        </blockquote>
+
+                        <p class="wiki-editable-p" contenteditable="true">
+                            Hoy en día, transformado en Empresa Social del Estado de categoría especial y acreditado en excelencia de salud por el ICONTEC, el hospital destaca por su vocación docente e investigativa, sus unidades de alta complejidad y la implementación de innovaciones como la telemedicina (SaludTIC), consolidándose como un faro de resiliencia y orgullo institucional tulueño.
+                        </p>
+                    </div>
+
+                    <!-- Contenedor dinámico para monumentos agregados por los usuarios -->
+                    <div id="custom-monuments-container"></div>
+
+                    <!-- Botón para añadir directamente al catálogo -->
                     <div class="wiki-append-section">
-                        <button type="button" id="btn-add-paragraph-monuments" class="btn btn-outline">
+                        <button type="button" id="btn-quick-add-monument" class="btn btn-outline">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            + Añadir nuevo hito o monumento
+                            + Registrar nuevo hito tulueño mediante el formulario oficial
                         </button>
                     </div>
                 </article>
 
-                <!-- Barra Lateral: Resumen de Monumentos -->
+                <!-- Barra Lateral: Resumen de Monumentos de Tuluá -->
                 <aside class="wiki-sidebar">
                     <div class="wiki-infobox">
                         <div class="infobox-header">
-                            <h3 class="infobox-title" contenteditable="true">Inventario de Monumentos</h3>
-                            <span class="infobox-subtitle" contenteditable="true">Registro Municipal Nº 104</span>
+                            <h3 class="infobox-title" contenteditable="true">Catálogo Patrimonial de Tuluá</h3>
+                            <span class="infobox-subtitle" contenteditable="true">Inventario Municipal</span>
                         </div>
                         <div class="infobox-figure">
                             <div class="infobox-placeholder-badge">
-                                <span>🗿</span>
-                                <small>Hitos Catalogados</small>
+                                <span>🗺️</span>
+                                <small>Hitos de Tuluá, Valle</small>
                             </div>
                         </div>
                         <table class="infobox-table">
                             <tbody>
                                 <tr>
-                                    <th scope="row">Monumentos Totales</th>
-                                    <td contenteditable="true">14 registrados (3 destacados)</td>
+                                    <th scope="row">Lugares Catalogados</th>
+                                    <td contenteditable="true" id="infobox-total-monuments">3 emblemáticos documentados</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Materiales predominantes</th>
-                                    <td contenteditable="true">Bronce, Granito, Madera de Quebracho</td>
+                                    <th scope="row">Templo representativo</th>
+                                    <td contenteditable="true">Iglesia de los Franciscanos (1931)</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Monumento más antiguo</th>
-                                    <td contenteditable="true">Molino Hidráulico (1938)</td>
+                                    <th scope="row">Espacio de convivencia</th>
+                                    <td contenteditable="true">Parque de la Familia (B. Fátima)</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Organismo custodio</th>
-                                    <td contenteditable="true">Comisión Vecinal de Patrimonio</td>
+                                    <th scope="row">Centro hospitalario</th>
+                                    <td contenteditable="true">Hosp. Tomás Uribe Uribe (1947)</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Acceso al público</th>
-                                    <td contenteditable="true">Libre y gratuito todo el año</td>
+                                    <th scope="row">Acceso ciudadano</th>
+                                    <td contenteditable="true">Libre, público y comunitario</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
                     <div class="wiki-toc-card">
-                        <h4 class="toc-title">Monumentos en esta página</h4>
+                        <h4 class="toc-title">Monumentos en Tuluá</h4>
                         <ol class="toc-list" id="monuments-toc-list">
-                            <li><a href="#mon-plaza-fundadores">1. Monumento a los Fundadores</a></li>
-                            <li><a href="#mon-antiguo-molino">2. El Viejo Molino Hidráulico</a></li>
-                            <li><a href="#mon-fuente-memoria">3. La Fuente de la Memoria</a></li>
+                            <li><a href="#mon-iglesia-franciscanos">1. Iglesia de los Franciscanos</a></li>
+                            <li><a href="#mon-parque-familia">2. Parque de la Familia</a></li>
+                            <li><a href="#mon-hospital-tomas-uribe">3. Hospital Tomás Uribe Uribe</a></li>
                         </ol>
                     </div>
                 </aside>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- VISTA 3: ADD MONUMENT (Formulario de Carga)   -->
+        <!-- ============================================== -->
+        <div id="view-add-monument" class="wiki-view hidden">
+            <div class="wiki-header-meta">
+                <div class="meta-breadcrumbs">
+                    <span>Historicus Tuluá</span> &rsaquo; <span>Catálogo Patrimonial</span> &rsaquo; <strong>Registrar Nuevo Lugar o Monumento</strong>
+                </div>
+                <div class="wiki-stats">
+                    <span class="wiki-badge-editable">📝 Formulario Comunitario de Tuluá</span>
+                </div>
+            </div>
+
+            <div class="add-monument-container">
+                <div class="add-monument-header">
+                    <span class="form-badge">🏛️ Contribución Ciudadana Tulueña</span>
+                    <h2 class="form-title">Registrar Nuevo Lugar o Monumento de Tuluá</h2>
+                    <p class="form-subtitle">Completa los datos históricos y culturales del lugar o monumento de Tuluá para incorporarlo de manera permanente al archivo abierto.</p>
+                </div>
+
+                <form id="form-add-monument" class="monument-form" novalidate>
+                    <div class="form-grid">
+                        
+                        <!-- Título del Monumento -->
+                        <div class="form-group full-width">
+                            <label for="monument-title" class="form-label">
+                                Nombre o Título del Monumento o Lugar <span class="required">*</span>
+                            </label>
+                            <input type="text" id="monument-title" name="title" class="form-input" placeholder="Ej. Parque Carlos Sarmiento Lora, Casa de la Cultura, etc." required>
+                            <span class="input-hint">Nombre oficial o denominación popular reconocida por los vecinos de Tuluá.</span>
+                        </div>
+
+                        <!-- Categoría / Tipo -->
+                        <div class="form-group">
+                            <label for="monument-category" class="form-label">
+                                Tipo o Categoría Patrimonial <span class="required">*</span>
+                            </label>
+                            <select id="monument-category" name="category" class="form-select" required>
+                                <option value="Patrimonio Arquitectónico y Religioso">Patrimonio Arquitectónico y Religioso</option>
+                                <option value="Espacio Público y Convivencia">Espacio Público y Convivencia</option>
+                                <option value="Patrimonio Cívico e Institucional">Patrimonio Cívico e Institucional</option>
+                                <option value="Monolito / Escultura / Estatua">Monolito / Escultura / Estatua</option>
+                                <option value="Reserva Natural o Parque Ecológico">Reserva Natural o Parque Ecológico</option>
+                                <option value="Edificación Histórica">Edificación Histórica</option>
+                            </select>
+                        </div>
+
+                        <!-- Año o Década de Inauguración -->
+                        <div class="form-group">
+                            <label for="monument-year" class="form-label">
+                                Año / Periodo de Construcción o Fundación
+                            </label>
+                            <input type="text" id="monument-year" name="year" class="form-input" placeholder="Ej. 1931, 1947, Década de 1970">
+                        </div>
+
+                        <!-- Ubicación -->
+                        <div class="form-group full-width">
+                            <label for="monument-location" class="form-label">
+                                Ubicación Geográfica o Dirección en Tuluá
+                            </label>
+                            <input type="text" id="monument-location" name="location" class="form-input" placeholder="Ej. Barrio Fátima, Carrera 26 con Calle 34, etc.">
+                        </div>
+
+                        <!-- Carga de Imagen / Fotografía -->
+                        <div class="form-group full-width">
+                            <label class="form-label">
+                                Fotografía o Registro Gráfico del Lugar
+                            </label>
+                            
+                            <div class="file-dropzone" id="monument-dropzone">
+                                <input type="file" id="monument-image-input" name="image" accept="image/*" class="file-input-hidden">
+                                <div class="dropzone-idle" id="dropzone-idle-content">
+                                    <div class="dropzone-icon">📷</div>
+                                    <p class="dropzone-title">Haz clic para seleccionar o arrastra una imagen aquí</p>
+                                    <p class="dropzone-hint">Formatos soportados: JPG, PNG, WEBP (Opcional: el usuario puede subir la imagen después)</p>
+                                    <button type="button" class="btn btn-secondary btn-sm" id="btn-browse-file">Seleccionar Archivo</button>
+                                </div>
+                                <div class="dropzone-preview hidden" id="dropzone-preview-content">
+                                    <img src="" alt="Previsualización del monumento" id="image-preview" class="preview-img">
+                                    <div class="preview-controls">
+                                        <span id="preview-filename" class="preview-name">foto_monumento.jpg</span>
+                                        <button type="button" id="btn-remove-image" class="btn-remove-img" title="Cambiar imagen">✕ Cambiar imagen</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Descripción Histórica y Relevancia -->
+                        <div class="form-group full-width">
+                            <label for="monument-description" class="form-label">
+                                Reseña Histórica y Relevancia Cultural para Tuluá <span class="required">*</span>
+                            </label>
+                            <textarea id="monument-description" name="description" rows="5" class="form-textarea" placeholder="Narra los orígenes, los benefactores, su significado social y los hitos históricos vinculados con Tuluá..." required></textarea>
+                            <span class="input-hint">El texto podrá seguir siendo editado en modo wiki tras su publicación.</span>
+                        </div>
+
+                        <!-- Testimonio o Cita Oral -->
+                        <div class="form-group full-width">
+                            <label for="monument-quote" class="form-label">
+                                Testimonio Oral, Anécdota o Cita Documental (Opcional)
+                            </label>
+                            <input type="text" id="monument-quote" name="quote" class="form-input" placeholder="Ej. 'Recuerdo cuando nos reuníamos toda la familia en este parque los domingos...'">
+                        </div>
+
+                    </div>
+
+                    <!-- Botones de Acción del Formulario -->
+                    <div class="form-actions">
+                        <button type="button" id="btn-cancel-add" class="btn btn-secondary">
+                            Cancelar
+                        </button>
+                        <button type="submit" id="btn-submit-monument" class="btn btn-primary btn-lg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            Publicar en el Archivo de Tuluá
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -348,12 +576,12 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <h4>Historicus</h4>
-                <p>Plataforma comunitaria de memoria histórica local y archivo abierto.</p>
+                <h4>Historicus Tuluá</h4>
+                <p>Plataforma comunitaria de memoria histórica, patrimonio y archivo abierto del municipio de Tuluá, Valle del Cauca.</p>
             </div>
             <div class="footer-meta">
-                <p>El conocimiento histórico pertenece a la comunidad. Todos los textos están abiertos a la edición y mejora colectiva.</p>
-                <p class="copyright">&copy; 2026 Registro y Documentación del Barrio. Licencia de Contenido Libre de Memoria.</p>
+                <p>El conocimiento y la memoria pertenecen a toda la comunidad tulueña. Todos los textos están abiertos a la edición y documentación colectiva.</p>
+                <p class="copyright">&copy; 2026 Archivo Histórico de Tuluá, Valle del Cauca. Licencia de Memoria Abierta.</p>
             </div>
         </div>
     </footer>
